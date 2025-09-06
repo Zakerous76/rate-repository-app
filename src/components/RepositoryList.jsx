@@ -60,6 +60,7 @@ const RepositoryList = () => {
 	return (
 		<FlatList
 			data={repositories}
+			style={{ marginHorizontal: 20 }}
 			ItemSeparatorComponent={ItemSeparator}
 			renderItem={({ item, index, separators }) => (
 				<RepositoryItem
