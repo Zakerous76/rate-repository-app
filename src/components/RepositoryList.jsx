@@ -1,5 +1,6 @@
 import { FlatList, View, StyleSheet } from 'react-native';
 import RepositoryItem from './RepositoryItem';
+import RepositoryItemV2 from './RepositoryItemV2';
 
 const styles = StyleSheet.create({
 	separator: {
@@ -63,7 +64,7 @@ const RepositoryList = () => {
 			style={{ marginHorizontal: 20 }}
 			ItemSeparatorComponent={ItemSeparator}
 			renderItem={({ item, index, separators }) => (
-				<RepositoryItem
+				<RepositoryItemV2
 					item={item}
 					separators={separators}
 					index={index}
