@@ -9,7 +9,6 @@ export default function App() {
 		</View>
 	);
 }
-// Exercise 10.1: initializing the application
 
 const styles = StyleSheet.create({
 	container: {
