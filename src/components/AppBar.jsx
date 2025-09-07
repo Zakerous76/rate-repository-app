@@ -1,18 +1,17 @@
-import { View, StyleSheet, Pressable } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import Constants from 'expo-constants';
-import Text from './Text';
 import theme from '../theme';
 import AppBarTab from './AppBarTab';
 
 const styles = StyleSheet.create({
 	container: {
-		paddingTop: Constants.statusBarHeight * 1.5 || 20,
+		paddingTop: Constants.statusBarHeight * 1.7 || 20,
 		marginBottom: 20,
 		paddingHorizontal: 20,
 		paddingBottom: 20,
 		backgroundColor: theme.colors.appBar,
 		flexDirection: 'row',
-		gap: 10,
+		justifyContent: 'space-between',
 		// ...
 	},
 	// ...
@@ -21,7 +20,8 @@ const styles = StyleSheet.create({
 const AppBar = () => {
 	return (
 		<View style={styles.container}>
-			<AppBarTab>Repositories</AppBarTab>
+			<AppBarTab linkTo={'/'}>Repositories</AppBarTab>
+			<AppBarTab linkTo={'/sign-in'}>Sign In</AppBarTab>
 		</View>
 	);
 };
