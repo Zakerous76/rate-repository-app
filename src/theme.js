@@ -20,6 +20,43 @@ const theme = {
 		normal: '400',
 		bold: '700',
 	},
+	button: {
+		primary: {
+			touchOpacity: {
+				backgroundColor: 'teal',
+				paddingVertical: 12,
+				paddingHorizontal: 24,
+				borderRadius: 6,
+				alignItems: 'center',
+			},
+			text: {
+				color: 'white',
+				fontSize: 16,
+				fontWeight: 'bold',
+			},
+		},
+		secondary: {
+			touchOpacity: {
+				backgroundColor: 'white',
+				paddingVertical: 12,
+				paddingHorizontal: 24,
+				borderRadius: 6,
+				alignItems: 'center',
+				borderColor: 'teal',
+				borderWidth: 3,
+			},
+			text: {
+				color: 'teal',
+				fontSize: 16,
+				fontWeight: 'bold',
+			},
+		},
+	},
+	textInput: {
+		padding: 10,
+		borderWidth: 1,
+		borderColor: 'grey',
+	},
 };
 
 export default theme;
