@@ -11,14 +11,11 @@ const styles = StyleSheet.create({
 		paddingBottom: 20,
 		backgroundColor: theme.colors.appBar,
 		flexDirection: 'row',
-		flexGrow: 1,
-		// ...
 	},
 	scrollContainer: {
 		flexDirection: 'row',
 		gap: 20,
 	},
-	// ...
 });
 
 const AppBar = () => {
@@ -31,6 +28,7 @@ const AppBar = () => {
 			>
 				<AppBarTab linkTo={'/'}>Repositories</AppBarTab>
 				<AppBarTab linkTo={'/sign-in'}>Sign In</AppBarTab>
+				<AppBarTab linkTo={'/bmi'}>BMI</AppBarTab>
 			</ScrollView>
 		</View>
 	);

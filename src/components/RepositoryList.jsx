@@ -1,6 +1,6 @@
 import { FlatList, View, StyleSheet } from 'react-native';
-import RepositoryItem from './RepositoryItem';
 import RepositoryItemV2 from './RepositoryItemV2';
+import PlarformSpecific from './PracticeComponents/PlarformSpecific';
 
 const styles = StyleSheet.create({
 	separator: {
@@ -59,21 +59,24 @@ const ItemSeparator = () => <View style={styles.separator} />;
 
 const RepositoryList = () => {
 	return (
-		<FlatList
-			data={repositories}
-			style={{ marginHorizontal: 20 }}
-			ItemSeparatorComponent={ItemSeparator}
-			renderItem={({ item, index, separators }) => (
-				<RepositoryItemV2
-					item={item}
-					separators={separators}
-					index={index}
-				/>
-			)}
-			keyExtractor={(item) => item.id}
-
-			// other props
-		/>
+		<View>
+			{/* <PlarformSpecific /> */}
+			<FlatList
+				data={repositories}
+				style={{ marginHorizontal: 20 }}
+				ItemSeparatorComponent={ItemSeparator}
+				renderItem={({ item, index, separators }) => (
+					<RepositoryItemV2
+						item={item}
+						separators={separators}
+						index={index}
+					/>
+				)}
+				keyExtractor={(item) => item.id}
+				showsVerticalScrollIndicator={false}
+				// other props
+			/>
+		</View>
 	);
 };
 

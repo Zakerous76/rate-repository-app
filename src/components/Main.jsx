@@ -1,10 +1,11 @@
 import { StyleSheet, View } from 'react-native';
 import RepositoryList from './RepositoryList';
-import Learning from './Learning';
+import Learning from './PracticeComponents/Learning';
 import AppBar from './AppBar';
 import theme from '../theme';
 import { Navigate, Route, Routes } from 'react-router-native';
 import SignIn from './SignIn';
+import BMI from './PracticeComponents/BMI';
 
 const styles = StyleSheet.create({
 	container: {
@@ -27,6 +28,10 @@ const Main = () => {
 				<Route
 					path='/sign-in'
 					element={<SignIn />}
+				/>
+				<Route
+					path='/bmi'
+					element={<BMI />}
 				/>
 				{/* Catching all other routes => routed to home */}
 				<Route
