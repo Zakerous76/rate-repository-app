@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { useApolloClient, useMutation } from '@apollo/client/react';
 import { SIGN_IN_MUTATION } from '../graphql/mutations';
 import useAuthStorage from './useAuthStorage';
