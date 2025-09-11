@@ -29,6 +29,7 @@ const Main = () => {
 					path='/sign-in'
 					element={<SignIn />}
 				/>
+
 				<Route
 					path='/bmi'
 					element={<BMI />}

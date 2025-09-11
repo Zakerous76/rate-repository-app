@@ -4,7 +4,8 @@ import * as yup from 'yup';
 import theme from '../theme';
 import useSignIn from '../hooks/useSignIn';
 import { useEffect, useState } from 'react';
-import authStorage from '../utils/authStorage';
+import useAuthStorage from '../hooks/useAuthStorage';
+import { useNavigate } from 'react-router';
 
 const initialValues = {
 	username: '',
@@ -24,11 +25,19 @@ const validationSchema = yup.object().shape({
 });
 
 const SignIn = () => {
-	const [signIn, result] = useSignIn();
+	const authStorage = useAuthStorage();
+
+	const [signIn, _] = useSignIn();
 	const [user, setUser] = useState();
 	const [authError, setAuthError] = useState('');
-	const tokenStorage = new authStorage.AuthStorage('accessTokenStorage');
-	const [accessToken, setAccessToken] = useState();
+	const nav = useNavigate();
+
+	useEffect(() => {
+		const init = async () => {
+			setUser(await authStorage.getAccessToken());
+		};
+		init();
+	}, []);
 
 	const onSubmit = async () => {
 		console.log(signInFormik.values);
@@ -37,6 +46,7 @@ const SignIn = () => {
 				username: signInFormik.values.username,
 				password: signInFormik.values.password,
 			});
+			setUser(await authStorage.getAccessToken());
 		} catch (e) {
 			setAuthError(e?.message);
 			console.log(e?.message);
@@ -47,22 +57,12 @@ const SignIn = () => {
 	};
 
 	useEffect(() => {
-		const getAccessToken = async () => {
-			console.log('result.data?.authenticate:', result.data?.authenticate);
-			setUser(result.data);
-			await tokenStorage.setAccessToken(result.data.authenticate.accessToken);
-			const res = await tokenStorage.getAccessToken();
-			setAccessToken(res);
-			console.log('accessToken from storage (res):', res);
-		};
-		if (result.data) {
-			getAccessToken();
-		}
-	}, [result.data]);
+		if (user) {
+			console.log('user:', user);
 
-	useEffect(() => {
-		console.log('accessToken from storage:', accessToken);
-	}, [accessToken]);
+			nav('/');
+		}
+	}, [user]);
 
 	const signInFormik = useFormik({
 		initialValues,
