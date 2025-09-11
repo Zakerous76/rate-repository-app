@@ -27,9 +27,20 @@ export default {
 		favicon: './assets/favicon.png',
 	},
 	extra: {
-		env: process.env.ENV,
-		apolloUri: process.env.APOLLO_URI,
-		RESTUrl: process.env.REST_URL,
+		env: process.env.EXPO_PUBLIC_ENV,
+		apolloUri: process.env.EXPO_PUBLIC_APOLLO_URI,
+		RESTUrl: process.env.EXPO_PUBLIC_REST_URL,
 	},
-	plugins: [['expo-secure-store']],
+	expo: {
+		plugins: [
+			[
+				'expo-secure-store',
+				{
+					configureAndroidBackup: true,
+					faceIDPermission:
+						'Allow $(PRODUCT_NAME) to access your Face ID biometric data.',
+				},
+			],
+		],
+	},
 };

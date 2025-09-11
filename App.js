@@ -5,12 +5,12 @@ import { ApolloProvider } from '@apollo/client/react';
 import Constants from 'expo-constants';
 
 import createApolloClient from './src/utils/apolloClient';
+import { Platform } from 'react-native';
 
 const apolloClient = createApolloClient();
 
 export default function App() {
 	// eslint-disable-next-line no-undef
-	console.log(Constants.expoConfig);
 	return (
 		<>
 			<NativeRouter>
