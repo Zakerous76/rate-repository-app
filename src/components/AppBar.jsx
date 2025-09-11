@@ -25,7 +25,6 @@ const styles = StyleSheet.create({
 const AppBar = () => {
 	const [user, setUser] = useState();
 	const { loading, error, data } = useQuery(ME_QUERY);
-	console.log('data:', data);
 
 	useEffect(() => {
 		if (data) {
@@ -42,8 +41,8 @@ const AppBar = () => {
 			>
 				<AppBarTab linkTo={'/'}>Repositories</AppBarTab>
 
-				{!user && <AppBarTab linkTo={'/sign-in'}>Sign In</AppBarTab>}
-				{user && <AppBarTab linkTo={'/sign-out'}>Sign Out</AppBarTab>}
+				{!user?.me && <AppBarTab linkTo={'/sign-in'}>Sign In</AppBarTab>}
+				{user?.me && <AppBarTab linkTo={'/sign-out'}>Sign Out</AppBarTab>}
 
 				<AppBarTab linkTo={'/bmi'}>BMI</AppBarTab>
 			</ScrollView>

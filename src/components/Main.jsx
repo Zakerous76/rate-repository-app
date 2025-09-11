@@ -6,6 +6,7 @@ import theme from '../theme';
 import { Navigate, Route, Routes } from 'react-router-native';
 import SignIn from './SignIn';
 import BMI from './PracticeComponents/BMI';
+import SignOut from './SignOut';
 
 const styles = StyleSheet.create({
 	container: {
@@ -29,7 +30,10 @@ const Main = () => {
 					path='/sign-in'
 					element={<SignIn />}
 				/>
-
+				<Route
+					path='/sign-out'
+					element={<SignOut />}
+				/>
 				<Route
 					path='/bmi'
 					element={<BMI />}
