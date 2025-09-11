@@ -10,7 +10,6 @@ const createApolloClient = (authStorage) => {
 	const authLink = new SetContextLink(async (prevContext, _operation) => {
 		try {
 			const accessToken = await authStorage.getAccessToken();
-			console.log('authorization:', `Bearer ${accessToken}`);
 			return {
 				headers: {
 					...prevContext.headers,
