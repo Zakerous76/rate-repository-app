@@ -2,6 +2,8 @@ import { useFormik } from 'formik';
 import { Text, TextInput, TouchableOpacity, View } from 'react-native';
 import * as yup from 'yup';
 import theme from '../theme';
+import useSignIn from '../hooks/useSignIn';
+import { useEffect, useState } from 'react';
 
 const initialValues = {
 	username: '',
@@ -11,7 +13,7 @@ const initialValues = {
 const validationSchema = yup.object().shape({
 	username: yup
 		.string()
-		.min(6, 'Username must be at least 6 characters') // corrected error message
+		.min(3, 'Username must be at least 3 characters') // corrected error message
 		.required('Username is required'),
 
 	password: yup
@@ -21,9 +23,32 @@ const validationSchema = yup.object().shape({
 });
 
 const SignIn = () => {
-	const onSubmit = () => {
+	const [signIn, result] = useSignIn();
+	const [user, setUser] = useState();
+	const [authError, setAuthError] = useState('');
+
+	const onSubmit = async () => {
 		console.log(signInFormik.values);
+		try {
+			await signIn({
+				username: signInFormik.values.username,
+				password: signInFormik.values.password,
+			});
+		} catch (e) {
+			setAuthError(e?.message);
+			console.log(e?.message);
+			setTimeout(() => {
+				setAuthError('');
+			}, 3000);
+		}
 	};
+
+	useEffect(() => {
+		if (result.data) {
+			console.log('result.data:', result.data?.authenticate);
+			setUser(result.data);
+		}
+	}, [result.data]);
 
 	const signInFormik = useFormik({
 		initialValues,
@@ -51,6 +76,9 @@ const SignIn = () => {
 			></TextInput>
 			{signInFormik.touched.password && signInFormik.errors.password && (
 				<Text style={{ color: '#d73a4a' }}>{signInFormik.errors.password}</Text>
+			)}
+			{authError.length > 1 && (
+				<Text style={{ color: '#d73a4a' }}>{authError}</Text>
 			)}
 			<TouchableOpacity
 				onPress={signInFormik.handleSubmit}

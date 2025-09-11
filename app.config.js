@@ -27,8 +27,9 @@ export default {
 		favicon: './assets/favicon.png',
 	},
 	extra: {
-		env: process.env.NODE_ENV,
+		env: process.env.ENV,
 		apolloUri: process.env.APOLLO_URI,
 		RESTUrl: process.env.REST_URL,
 	},
+	plugins: [['expo-secure-store']],
 };
