@@ -5,7 +5,6 @@ import { SetContextLink } from '@apollo/client/link/context';
 import { apolloURI } from '../constants';
 
 const createApolloClient = (authStorage) => {
-	console.log('createApolloClient creating');
 	// eslint-disable-next-line no-unused-vars
 	const authLink = new SetContextLink(async (prevContext, _operation) => {
 		try {

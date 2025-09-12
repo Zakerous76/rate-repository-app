@@ -21,7 +21,6 @@ export default function App() {
 					</NavigationContainer>
 				</AuthStorageContext.Provider>
 			</ApolloProvider>
-			<StatusBar style='inverted' />
 		</>
 	);
 }

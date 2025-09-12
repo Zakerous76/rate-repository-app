@@ -28,6 +28,20 @@ export const GET_REPO_QUERY = gql`
 	query GetRepository($id: ID!) {
 		repository(id: $id) {
 			...RepoFragment
+			reviews {
+				edges {
+					node {
+						id
+						text
+						rating
+						createdAt
+						user {
+							id
+							username
+						}
+					}
+				}
+			}
 		}
 	}
 	${REPO_FRAGMENT}

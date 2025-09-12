@@ -17,6 +17,7 @@ const WebWrapper = ({ children }) => {
 			</motion.div>
 		);
 	}
+	return <>{children}</>;
 };
 
 export default WebWrapper;
