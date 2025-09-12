@@ -12,7 +12,6 @@ const AuthStorage = new authStorage.AuthStorage();
 const apolloClient = createApolloClient(AuthStorage);
 
 export default function App() {
-	// eslint-disable-next-line no-undef
 	return (
 		<>
 			<NativeRouter>

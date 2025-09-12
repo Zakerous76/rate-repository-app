@@ -50,7 +50,10 @@ const RepositoryItem = ({ item, index, separators }) => {
 			? `${(item.ratingAverage / 1000).toFixed(1)}k`
 			: item.ratingAverage;
 	return (
-		<View style={styles.flexContainer}>
+		<View
+			testID='repositoryItem'
+			style={styles.flexContainer}
+		>
 			<View style={{ flexDirection: 'row', gap: 15, padding: 3 }}>
 				<View>
 					<Image
