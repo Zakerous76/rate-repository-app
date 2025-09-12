@@ -3,6 +3,7 @@ import RepositoryItem from './RepositoryItem';
 import useRepositories from '../hooks/useRepositories';
 import { useQuery } from '@apollo/client/react';
 import { GET_REPOSITORIES } from '../graphql/queries';
+import WebWrapper from './WebWrapper';
 
 const styles = StyleSheet.create({
 	separator: {
@@ -41,21 +42,22 @@ const RepositoryList = ({ mockRepo }) => {
 	}
 
 	return (
-		<FlatList
-			data={repositorNodes}
-			style={{ marginHorizontal: 20 }}
-			ItemSeparatorComponent={ItemSeparator}
-			renderItem={({ item, index, separators }) => (
-				<RepositoryItem
-					item={item}
-					separators={separators}
-					index={index}
-				/>
-			)}
-			keyExtractor={(item) => item.id}
-			showsVerticalScrollIndicator={false}
-			// other props
-		/>
+		<WebWrapper>
+			<FlatList
+				data={repositorNodes}
+				ItemSeparatorComponent={ItemSeparator}
+				renderItem={({ item, index, separators }) => (
+					<RepositoryItem
+						item={item}
+						separators={separators}
+						index={index}
+					/>
+				)}
+				keyExtractor={(item) => item.id}
+				showsVerticalScrollIndicator={false}
+				// other props
+			/>
+		</WebWrapper>
 	);
 };
 

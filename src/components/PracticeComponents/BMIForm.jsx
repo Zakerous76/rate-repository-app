@@ -50,7 +50,7 @@ const BMIFrom = ({ onSubmit, bmi }) => {
 
 			<TouchableOpacity
 				onPress={formik.handleSubmit}
-				style={theme.button.primary.touchOpacity}
+				style={theme.button.primary.touchableOpacity}
 			>
 				<Text style={theme.button.primary.text}>Calculate</Text>
 			</TouchableOpacity>

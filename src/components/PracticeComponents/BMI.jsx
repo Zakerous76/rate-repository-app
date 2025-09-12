@@ -1,6 +1,7 @@
 import { Text, View } from 'react-native';
 import BMIFrom from './BMIForm';
 import { useState } from 'react';
+import WebWrapper from '../WebWrapper';
 
 const getBMI = (mass, height) => {
 	return Math.round(mass / Math.pow(height / 100, 2));
@@ -14,12 +15,14 @@ const BMI = () => {
 		setBmi(bmi);
 	};
 	return (
-		<View>
-			<BMIFrom
-				onSubmit={handleFormSubmit}
-				bmi={bmi}
-			/>
-		</View>
+		<WebWrapper>
+			<View>
+				<BMIFrom
+					onSubmit={handleFormSubmit}
+					bmi={bmi}
+				/>
+			</View>
+		</WebWrapper>
 	);
 };
 

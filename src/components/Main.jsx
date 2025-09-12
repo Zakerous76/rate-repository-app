@@ -1,12 +1,13 @@
 import { StyleSheet, View } from 'react-native';
 import RepositoryList from './RepositoryList';
-import Learning from './PracticeComponents/Learning';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
 import AppBar from './AppBar';
 import theme from '../theme';
-import { Navigate, Route, Routes } from 'react-router-native';
 import SignIn from './SignIn';
 import BMI from './PracticeComponents/BMI';
 import SignOut from './SignOut';
+import RepositoryView from './RepositoryView';
 
 const styles = StyleSheet.create({
 	container: {
@@ -16,39 +17,41 @@ const styles = StyleSheet.create({
 	},
 });
 
+const Stack = createNativeStackNavigator();
+
 const Main = () => {
 	return (
 		<View style={styles.container}>
 			<AppBar />
-			<Routes>
+			<Stack.Navigator
+				screenOptions={{
+					headerShown: false,
+				}}
+			>
 				{/* Home View */}
-				<Route
-					path='/'
-					element={<RepositoryList />}
+				<Stack.Screen
+					name='RepositoryList'
+					component={RepositoryList}
 				/>
-				<Route
-					path='/sign-in'
-					element={<SignIn />}
+				<Stack.Screen
+					name='SignIn'
+					component={SignIn}
 				/>
-				<Route
-					path='/sign-out'
-					element={<SignOut />}
+				<Stack.Screen
+					name='SignOut'
+					component={SignOut}
 				/>
-				<Route
-					path='/bmi'
-					element={<BMI />}
+				<Stack.Screen
+					name='BMI'
+					component={BMI}
 				/>
-				{/* Catching all other routes => routed to home */}
-				<Route
-					path='*'
-					element={
-						<Navigate
-							to='/'
-							replace
-						/>
-					}
+				<Stack.Screen
+					name='RepositoryView'
+					component={RepositoryView}
+					options={{ animation: 'slide_from_right' }}
 				/>
-			</Routes>
+				{/* Catching all other Stack.Screens => Stack.Screend to home */}
+			</Stack.Navigator>
 		</View>
 	);
 };

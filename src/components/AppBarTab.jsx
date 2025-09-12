@@ -1,21 +1,24 @@
 import Text from './Text';
 import theme from '../theme';
 import { Pressable } from 'react-native';
-import { Link } from 'react-router-native';
+import { useNavigation } from '@react-navigation/native';
 
 const AppBarTab = ({ styles, children, linkTo, ...props }) => {
+	const navigation = useNavigation();
 	return (
-		<Pressable>
-			<Link to={linkTo}>
-				<Text
-					fontSize='subheading'
-					fontWeight='bold'
-					style={{ color: theme.colors.white, ...styles }}
-					{...props}
-				>
-					{children}
-				</Text>
-			</Link>
+		<Pressable
+			onPress={() => {
+				navigation.navigate(linkTo);
+			}}
+		>
+			<Text
+				fontSize='subheading'
+				fontWeight='bold'
+				style={{ color: theme.colors.white, ...styles }}
+				{...props}
+			>
+				{children}
+			</Text>
 		</Pressable>
 	);
 };

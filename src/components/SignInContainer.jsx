@@ -2,10 +2,8 @@ import { useFormik } from 'formik';
 import { Text, TextInput, TouchableOpacity, View } from 'react-native';
 import * as yup from 'yup';
 import theme from '../theme';
-import useSignIn from '../hooks/useSignIn';
-import { useEffect, useState } from 'react';
-import useAuthStorage from '../hooks/useAuthStorage';
-import { useNavigate } from 'react-router';
+import { useState } from 'react';
+import WebWrapper from './WebWrapper';
 
 const initialValues = {
 	username: '',
@@ -43,36 +41,44 @@ const SignIn = ({ handleSubmit }) => {
 	});
 
 	return (
-		<View style={{ paddingHorizontal: 20, gap: 10, justifyContent: 'center' }}>
-			<TextInput
-				placeholder='Username'
-				textContentType='name'
-				style={theme.textInput}
-				onChangeText={signInFormik.handleChange('username')}
-			></TextInput>
-			{signInFormik.touched.username && signInFormik.errors.username && (
-				<Text style={{ color: '#d73a4a' }}>{signInFormik.errors.username}</Text>
-			)}
-			<TextInput
-				placeholder='Password'
-				textContentType='password'
-				secureTextEntry
-				style={theme.textInput}
-				onChangeText={signInFormik.handleChange('password')}
-			></TextInput>
-			{signInFormik.touched.password && signInFormik.errors.password && (
-				<Text style={{ color: '#d73a4a' }}>{signInFormik.errors.password}</Text>
-			)}
-			{authError.length > 1 && (
-				<Text style={{ color: '#d73a4a' }}>{authError}</Text>
-			)}
-			<TouchableOpacity
-				onPress={signInFormik.handleSubmit}
-				style={theme.button.primary.touchOpacity}
+		<WebWrapper>
+			<View
+				style={{ paddingHorizontal: 20, gap: 10, justifyContent: 'center' }}
 			>
-				<Text style={theme.button.primary.text}>Sign In</Text>
-			</TouchableOpacity>
-		</View>
+				<TextInput
+					placeholder='Username'
+					textContentType='name'
+					style={theme.textInput}
+					onChangeText={signInFormik.handleChange('username')}
+				></TextInput>
+				{signInFormik.touched.username && signInFormik.errors.username && (
+					<Text style={{ color: '#d73a4a' }}>
+						{signInFormik.errors.username}
+					</Text>
+				)}
+				<TextInput
+					placeholder='Password'
+					textContentType='password'
+					secureTextEntry
+					style={theme.textInput}
+					onChangeText={signInFormik.handleChange('password')}
+				></TextInput>
+				{signInFormik.touched.password && signInFormik.errors.password && (
+					<Text style={{ color: '#d73a4a' }}>
+						{signInFormik.errors.password}
+					</Text>
+				)}
+				{authError.length > 1 && (
+					<Text style={{ color: '#d73a4a' }}>{authError}</Text>
+				)}
+				<TouchableOpacity
+					onPress={signInFormik.handleSubmit}
+					style={theme.button.primary.touchOpacity}
+				>
+					<Text style={theme.button.primary.text}>Sign In</Text>
+				</TouchableOpacity>
+			</View>
+		</WebWrapper>
 	);
 };
 

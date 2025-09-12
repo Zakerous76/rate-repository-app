@@ -39,12 +39,12 @@ const AppBar = () => {
 				contentContainerStyle={styles.scrollContainer}
 				showsHorizontalScrollIndicator={false}
 			>
-				<AppBarTab linkTo={'/'}>Repositories</AppBarTab>
+				<AppBarTab linkTo={'RepositoryList'}>Repositories</AppBarTab>
 
-				{!user?.me && <AppBarTab linkTo={'/sign-in'}>Sign In</AppBarTab>}
-				{user?.me && <AppBarTab linkTo={'/sign-out'}>Sign Out</AppBarTab>}
+				{!user?.me && <AppBarTab linkTo={'SignIn'}>Sign In</AppBarTab>}
+				{user?.me && <AppBarTab linkTo={'SignOut'}>Sign Out</AppBarTab>}
 
-				<AppBarTab linkTo={'/bmi'}>BMI</AppBarTab>
+				<AppBarTab linkTo={'BMI'}>BMI</AppBarTab>
 			</ScrollView>
 		</View>
 	);

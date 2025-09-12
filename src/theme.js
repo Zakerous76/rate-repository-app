@@ -29,7 +29,7 @@ const theme = {
 	},
 	button: {
 		primary: {
-			touchOpacity: {
+			touchableOpacity: {
 				backgroundColor: 'teal',
 				paddingVertical: 12,
 				paddingHorizontal: 24,
@@ -64,6 +64,18 @@ const theme = {
 		borderWidth: 1,
 		borderColor: 'grey',
 	},
+	repoContainer: {
+		display: 'flex',
+		backgroundColor: '#fff',
+		gap: 20,
+		padding: 10,
+		borderRadius: 10,
+		marginBottom: 10,
+		marginHorizontal: 20,
+		justifyContent: 'center',
+		alignContents: 'center',
+	},
+	pageContainer: {},
 };
 
 export default theme;
