@@ -4,6 +4,7 @@ import useRepositories from '../hooks/useRepositories';
 import { useQuery } from '@apollo/client/react';
 import { GET_REPOSITORIES } from '../graphql/queries';
 import WebWrapper from './WebWrapper';
+import theme from '../theme';
 
 const styles = StyleSheet.create({
 	separator: {
@@ -44,6 +45,9 @@ const RepositoryList = ({ mockRepo }) => {
 	return (
 		<WebWrapper>
 			<FlatList
+				style={{
+					margin: theme.container.marginHorizontal,
+				}}
 				data={repositorNodes}
 				ItemSeparatorComponent={ItemSeparator}
 				renderItem={({ item, index, separators }) => (
@@ -54,8 +58,7 @@ const RepositoryList = ({ mockRepo }) => {
 					/>
 				)}
 				keyExtractor={(item) => item.id}
-				showsVerticalScrollIndicator={false}
-				// other props
+				showsVerticalScrollIndicator={true}
 			/>
 		</WebWrapper>
 	);

@@ -79,7 +79,7 @@ const RepositoryItem = ({ item, index, separators, showButton }) => {
 					</View>
 					<View style={{ flexShrink: 1, gap: 7 }}>
 						<Text fontWeight={'bold'}>{item.fullName}</Text>
-						<Text style={{}}>{item.description}</Text>
+						<Text>{item.description}</Text>
 						<Text style={styles.languageTag}>{item.language}</Text>
 					</View>
 				</View>

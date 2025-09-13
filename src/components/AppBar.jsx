@@ -10,7 +10,6 @@ import { ME_QUERY } from '../graphql/queries';
 const styles = StyleSheet.create({
 	mainContainer: {
 		paddingTop: Constants.statusBarHeight * 1.7 || 20,
-		marginBottom: 20,
 		paddingHorizontal: 20,
 		paddingBottom: 20,
 		backgroundColor: theme.colors.appBar,

@@ -59,8 +59,6 @@ const SignIn = () => {
 
 	useEffect(() => {
 		if (user) {
-			console.log('user:', user);
-
 			navigation.navigate('Repositories');
 		}
 	}, [user]);
